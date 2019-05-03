@@ -2,8 +2,8 @@
 
 ## Instalação:
 ```sh
-git clone <project>
-cd apps/
+git clone https://github.com/MatheusSbaraglini/my-apps.git
+cd my-apps/
 ./install.sh
 ```
 
