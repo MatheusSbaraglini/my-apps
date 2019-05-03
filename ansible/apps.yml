@@ -1,0 +1,45 @@
+- name: Playbook to install my apps
+  remote_user: root
+  hosts: local
+  tasks:
+    - name: "Install zshell"
+      apt:
+        name: zsh
+    
+    - name: "Install git"
+      apt:
+        name: git
+
+    - name: "Install spotify"
+      command: snap install spotify
+
+    - name: "Install code"
+      command: snap install code --classic
+
+    - name: "Install nodeJS"
+      command: snap install node --channel=10/stable --classic
+    
+    - name: "Install go"
+      command: snap install go --classic
+
+    - name: "Install postman"
+      command: snap install postman
+
+    - name: "Install docker"
+      command: snap install docker
+
+    - name: "Create docker-compose directory"
+      file:
+        path: "/usr/local/bin/docker-compose"
+        state: directory
+
+    - name: "check if docker-compose directory is empty"
+      command: ls /usr/local/bin/docker-compose
+      register: docker_compose_contents
+
+    - name: "Install docker-compose"
+      get_url:
+        url: https://github.com/docker/compose/releases/download/1.24.0/docker-compose-Linux-x86_64
+        dest: /usr/local/bin/docker-compose
+        mode: +x
+      when: docker_compose_contents.stdout == ""

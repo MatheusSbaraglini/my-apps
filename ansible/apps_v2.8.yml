@@ -1,0 +1,44 @@
+# >>>>>>>>>> for 2.8 ansible version <<<<<<<<<<<
+- name.: Playbook to install my apps
+  remote_user: root
+  hosts: local
+  tasks:
+    - name: "Install zshell"
+      apt:
+        name: zsh
+
+    - name: Install chromium
+      snap:
+        name: chromium
+
+    - name: "Install spotify"
+      snap:
+        name: spotify
+
+    - name: "Install code --classic"
+      snap:
+        name: code
+        classic: yes
+
+    - name: "Install nodeJS"
+      snap:
+        name: node
+        channel: 10/stable
+        classic: yes
+
+    - name: "Install postman"
+      snap:
+        name: postman
+
+    - name: "Install docker"
+      snap:
+        name: docker
+
+    - name: "Install notepad++"
+      snap:
+        name: notepad-plus-plus
+
+    - name: "Install kubernetes"
+      snap:
+        name: kubectl
+        classic: yes
